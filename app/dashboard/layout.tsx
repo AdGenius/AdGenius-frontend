@@ -2,6 +2,7 @@
 
 import { useAuthStore } from "@/stores/useAuthStore";
 import { redirect } from "next/navigation";
+import Loading from "@/components/LoadingUI";
 
 export default function DashboardLayout({
   children,
@@ -11,7 +12,7 @@ export default function DashboardLayout({
   const user = useAuthStore((state) => state.user);
 
   if (user === undefined) {
-    return <div>Loading...</div>;
+    return <Loading fullScreen text="Loading..." />;
   }
 
   console.log(user, "Dashboard user");
